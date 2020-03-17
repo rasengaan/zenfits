@@ -1,0 +1,60 @@
+<div class="row" >
+
+  <div class="">
+    <ul *ngFor="let node of dataSet">
+      <!--  <app-person data={node}></app-person>  -->
+      <div class="btn-group dropright node" *ngIf="node.manager.url===null && node.status==='active'">
+        <button class="btn btn-secondary" style="padding:none;">
+          <li>
+            <div class="card" style="width: 50%;">
+              <div class="card-body">
+                <h5 class="card-title" style="color:black;">{{node.preferred_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{node.last_name}}</h6>
+
+              </div>
+            </div>
+          </li>
+        </button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" style="width:10%;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropright</span>
+        </button>
+        <div class="dropdown-menu">
+          <li *ngFor="let worker of dataSet" class="dropList">
+            <div *ngIf="worker.manager.url=='https://api.zenefits.com/core/people/'+node.id && worker.status==='active'">
+              <div class="card" style="width: 50%;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color:black;">{{worker.preferred_name}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{worker.last_name}}</h6>
+
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </div>
+    </ul>
+  </div>
+
+
+
+
+  <!--
+
+    <ul *ngFor="let node of dataSet">
+      <!--  <app-person data={node}></app-person>  -- > 
+  <div class="btn-group dropdown node" *ngIf="node.manager.url===null && node.status==='active'">
+    <button type="button" class="btn btn-secondary" (click)="set(node)">
+      <li>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" style="color:black;">{{node.preferred_name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{node.last_name}}</h6>
+
+          </div>
+        </div>
+      </li>
+    </button>
+  </div>
+  </ul>
+  -->
+</div>
